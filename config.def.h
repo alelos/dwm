@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const char *fonts[] = {
@@ -69,6 +70,12 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *weechatcmd[] = {"st", "-t", "weechat", "-e", "weechat", NULL };
 static const char popuptermname[] = "scratch";
 static const char *popuptermcmd[] = {"st", "-t", popuptermname, NULL };
+static const char *volupcmd[] = { "amixer", "sset", "Master", "2+", NULL };
+static const char *voldowncmd[] = { "amixer", "sset", "Master", "2-", NULL };
+static const char *volmutecmd[] = { "amixer", "sset", "Master", "toggle", NULL };
+static const char *brightupcmd[] = { "xbacklight", "-inc", "5", NULL };
+static const char *brightdowncmd[] = { "xbacklight", "-dec", "5", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,6 +106,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
         { MODKEY,                       XK_w,      spawn,          {.v = weechatcmd } },
         { MODKEY,                       XK_grave,  togglepopup,    {.v = popuptermcmd } },
+        { 0,                            XF86XK_AudioLowerVolume,   spawn, {.v = voldowncmd} },
+        { 0,                            XF86XK_AudioRaiseVolume,   spawn, {.v = volupcmd} },
+        { 0,                            XF86XK_AudioMute,          spawn, {.v = volmutecmd} },
+        { 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = brightupcmd} },
+        { 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = brightdowncmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
