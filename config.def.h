@@ -53,6 +53,14 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define NUMCOLORS 4
+static const char colors[NUMCOLORS][MAXCOLORS][8] = {
+    // border foreground background
+    { "#484848", "#939393", "#000033" },  // normal
+    { "#439dca", "#ee7600", "#000000" },  // selected
+    { "#ff0000", "#000000", "#ffff00" },  // urgent/warning  (black on yellow)
+    { "#ff0000", "#ffffff", "#ff0000" },  // error (white on red)
+};
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
