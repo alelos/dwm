@@ -58,7 +58,7 @@ static const char colors[NUMCOLORS][MAXCOLORS][8] = {
     // border foreground background
     { "#484848", "#939393", "#000033" },  // normal
     { "#439dca", "#ee7600", "#000000" },  // selected
-    { "#ff0000", "#000000", "#ffff00" },  // urgent/warning  (black on yellow)
+    { "#ff0000", "#f3f315", "#000000" },  // urgent/warning  (black on yellow)
     { "#ff0000", "#ffffff", "#ff0000" },  // error (white on red)
 };
 
