@@ -2,8 +2,8 @@
 
 /* appearance */
 static const char *fonts[] = {
-    "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*",
-    "-wuncon-siji-medium-r-normal-*-10-*-*-*-*-*-*-*",
+    "Terminess Powerline:size=16",
+    "Siji:size=17",
 };
 static const char dmenufont[] = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#444444";
