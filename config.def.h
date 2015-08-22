@@ -34,6 +34,7 @@ static const Rule rules[] = {
 static const float mfact      = 0.60; /* factor of master area size [0.05..0.95] */
 static const int nmaster      = 1;    /* number of clients in master area */
 static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
+static const float popuptermfact = 0.35;
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -58,6 +59,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *weechatcmd[] = {"st", "-t", "weechat", "-e", "weechat", NULL };
+static const char popuptermname[] = "scratch";
+static const char *popuptermcmd[] = {"st", "-t", popuptermname, "-e", "tmux", "-2", "new", "-s", "scratch", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -87,6 +90,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
         { MODKEY,                       XK_w,      spawn,          {.v = weechatcmd } },
+        { MODKEY,                       XK_grave,  togglepopup,    {.v = popuptermcmd } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

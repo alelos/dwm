@@ -220,6 +220,7 @@ static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
+static void togglepopup(const Arg *arg);
 static void unfocus(Client *c, Bool setfocus);
 static void unmanage(Client *c, Bool destroyed);
 static void unmapnotify(XEvent *e);
@@ -278,6 +279,7 @@ static Window root;
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
+static unsigned int popuptag = 1 << LENGTH(tags);
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
@@ -348,7 +350,7 @@ applysizehints(Client *c, int *x, int *y, int *w, int *h, Bool interact) {
 		*h = bh;
 	if(*w < bh)
 		*w = bh;
-	if(resizehints || c->isfloating || !c->mon->lt[c->mon->sellt]->arrange) {
+        if(strcmp(c->name, popuptermname) && (resizehints || c->isfloating || !c->mon->lt[c->mon->sellt]->arrange)) {
 		/* see last two sentences in ICCCM 4.1.2.3 */
 		baseismin = c->basew == c->minw && c->baseh == c->minh;
 		if(!baseismin) { /* temporarily remove base dimensions */
@@ -1065,6 +1067,16 @@ manage(Window w, XWindowAttributes *wa) {
 	           && (c->x + (c->w / 2) < c->mon->wx + c->mon->ww)) ? bh : c->mon->my);
 	c->bw = borderpx;
 
+        if(!strcmp(c->name, popuptermname)) {
+            c->mon->tagset[c->mon->seltags] |= c->tags = popuptag;
+            c->isfloating = True;
+            c->h = c->mon->wh * popuptermfact;
+            resize(c, c->mon->wx, c->mon->wy + c->mon->wh - c->h, c->mon->ww - 2 * c->bw, c->h - 2 * c->bw, False);
+        }
+        else {
+            c->tags &= TAGMASK;
+        }
+
 	wc.border_width = c->bw;
 	XConfigureWindow(dpy, w, CWBorderWidth, &wc);
 	XSetWindowBorder(dpy, w, scheme[SchemeNorm].border->pix);
@@ -1720,6 +1732,29 @@ togglebar(const Arg *arg) {
 	updatebarpos(selmon);
 	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
 	arrange(selmon);
+}
+
+void 
+togglepopup(const Arg *arg) {
+    Client *c = NULL;
+    unsigned int found = 0;
+
+    for(c = selmon->clients; c && !(found = c->tags & popuptag); c = c->next);
+    if(found) {
+        unsigned int newtagset = selmon->tagset[selmon->seltags] ^ popuptag;
+        if(newtagset) {
+            selmon->tagset[selmon->seltags] = newtagset;
+            focus(NULL);
+            arrange(selmon);
+        }
+        if(ISVISIBLE(c)) {
+            focus(c);
+            restack(selmon);
+        }
+    }
+    else {
+        spawn(arg);
+    }
 }
 
 void
