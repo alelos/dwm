@@ -18,7 +18,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "\ue010", "\ue011", "\ue012", "\ue013", "\ue014", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -60,7 +60,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *weechatcmd[] = {"st", "-t", "weechat", "-e", "weechat", NULL };
 static const char popuptermname[] = "scratch";
-static const char *popuptermcmd[] = {"st", "-t", popuptermname, "-e", "tmux", "-2", "new", "-s", "scratch", NULL };
+static const char *popuptermcmd[] = {"st", "-t", popuptermname, NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
