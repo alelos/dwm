@@ -2,9 +2,8 @@
 
 /* appearance */
 static const char *fonts[] = {
-    "Sans:size=10.5",
-    "VL Gothic:size=10.5",
-    "WenQuanYi Micro Hei:size=10.5",
+    "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*",
+    "-wuncon-siji-medium-r-normal-*-10-*-*-*-*-*-*-*",
 };
 static const char dmenufont[] = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#444444";
