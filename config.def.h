@@ -55,13 +55,18 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-#define NUMCOLORS 4
+#define NUMCOLORS 9
 static const char colors[NUMCOLORS][MAXCOLORS][8] = {
     // border foreground background
     { "#484848", "#939393", "#000033" },  // normal
     { "#439dca", "#ee7600", "#000000" },  // selected
     { "#ff0000", "#f3f315", "#000000" },  // urgent/warning  (black on yellow)
     { "#ff0000", "#ffffff", "#ff0000" },  // error (white on red)
+    { "#000000", "#006400", "#000033" },  // dark green
+    { "#000000", "#990000", "#000033" },  // dark red
+    { "#000000", "#ee7600", "#000033" },  // dark orange
+    { "#000000", "#939393", "#000033" },  // gray
+    { "#000000", "#ffffff", "#000033" },  // white
 };
 
 /* commands */
