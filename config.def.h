@@ -7,6 +7,7 @@ static const char *fonts[] = {
     "Siji:size=17",
 };
 static const char dmenufont[] = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char rofifont[] = "Anonymous Pro 18";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -75,11 +76,14 @@ static const char *voldowncmd[] = { "amixer", "sset", "Master", "2-", NULL };
 static const char *volmutecmd[] = { "amixer", "sset", "Master", "toggle", NULL };
 static const char *brightupcmd[] = { "xbacklight", "-inc", "5", NULL };
 static const char *brightdowncmd[] = { "xbacklight", "-dec", "5", NULL };
+static const char *passcmd[] = {"passrofi", NULL};
+static const char *roficmd[] = {"rofi", "-font", rofifont, "-show", "run", NULL};
 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_o,      spawn,          {.v = roficmd } },
+        { MODKEY,                       XK_p,      spawn,          {.v = passcmd} },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
