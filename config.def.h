@@ -84,6 +84,7 @@ static const char *brightupcmd[] = { "xbacklight", "-inc", "5", NULL };
 static const char *brightdowncmd[] = { "xbacklight", "-dec", "5", NULL };
 static const char *passcmd[] = {"passrofi", NULL};
 static const char *roficmd[] = {"rofi", "-font", rofifont, "-show", "run", NULL};
+static const char *lockcmd[] = {"slimlock", NULL};
 
 
 static Key keys[] = {
@@ -116,6 +117,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
         { MODKEY,                       XK_w,      spawn,          {.v = weechatcmd } },
         { MODKEY,                       XK_grave,  togglepopup,    {.v = popuptermcmd } },
+        { MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd} },
         { 0,                            XF86XK_AudioLowerVolume,   spawn, {.v = voldowncmd} },
         { 0,                            XF86XK_AudioRaiseVolume,   spawn, {.v = volupcmd} },
         { 0,                            XF86XK_AudioMute,          spawn, {.v = volmutecmd} },
