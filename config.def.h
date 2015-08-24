@@ -30,7 +30,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
         { "st-256color", NULL, "weechat", 1 << 2, False, -1 },
         { "Firefox",     NULL, NULL,      1 << 1, False, -1 },
-        { "mpv", NULL, NULL, 1 << 4, False, -1 },
+        { "qutebrowser", NULL, NULL,      1 << 1, False, -1 },
+        { "mpv",         NULL, NULL,      1 << 4, False, -1 },
 };
 
 /* layout(s) */
