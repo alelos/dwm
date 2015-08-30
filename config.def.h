@@ -28,7 +28,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-        { "st-256color", NULL, "weechat", 1 << 2, False, -1 },
+        { "Termite", NULL, "weechat", 1 << 2, False, -1 },
         { "Firefox",     NULL, NULL,      1 << 1, False, -1 },
         { "qutebrowser", NULL, NULL,      1 << 1, False, -1 },
         { "mpv",         NULL, NULL,      1 << 4, False, -1 },
@@ -74,10 +74,10 @@ static const char colors[NUMCOLORS][MAXCOLORS][8] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *weechatcmd[] = {"st", "-t", "weechat", "-e", "weechat", NULL };
+static const char *termcmd[]  = { "termite", NULL };
+static const char *weechatcmd[] = {"termite", "-t", "weechat", "-e", "weechat", NULL };
 static const char popuptermname[] = "scratch";
-static const char *popuptermcmd[] = {"st", "-t", popuptermname, NULL };
+static const char *popuptermcmd[] = {"termite", "-t", popuptermname, NULL };
 static const char *volupcmd[] = { "amixer", "sset", "Master", "2+", NULL };
 static const char *voldowncmd[] = { "amixer", "sset", "Master", "2-", NULL };
 static const char *volmutecmd[] = { "amixer", "sset", "Master", "toggle", NULL };
