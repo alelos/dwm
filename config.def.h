@@ -85,7 +85,7 @@ static const char *brightupcmd[] = { "xbacklight", "-inc", "5", NULL };
 static const char *brightdowncmd[] = { "xbacklight", "-dec", "5", NULL };
 static const char *passcmd[] = {"passrofi", NULL};
 static const char *roficmd[] = {"rofi", "-font", rofifont, "-show", "run", NULL};
-static const char *lockcmd[] = {"slimlock", NULL};
+static const char *lockcmd[] = {"lock", NULL};
 
 
 static Key keys[] = {
